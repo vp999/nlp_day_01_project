@@ -16,7 +16,7 @@ This assignment comprises of implementation of one of the preprocessing steps na
 | Parameter | dtype | argument type | default value | description |
 | --- | --- | --- | --- | --- | 
 | path | String | compulsory |  | Path of data folder |
-|
+
 
 
 
