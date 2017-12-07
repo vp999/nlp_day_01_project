@@ -14,8 +14,8 @@ class Testing(unittest.TestCase):
         with open('q01_load_data/test/user_sol.pkl', 'wb') as f:
             dill.dump(q01_load_data, f)
 
-        # with open('q01_load_data/test/test_sol.pkl', 'wb') as f:
-        #     dill.dump(q01_load_data, f)
+        with open('q01_load_data/test/test_sol.pkl', 'wb') as f:
+            dill.dump(q01_load_data, f)
         with open('q01_load_data/test/user_sol.pkl', 'rb') as f:
             self.student_func = dill.load(f)
         with open('q01_load_data/test/test_sol.pkl', 'rb') as f:

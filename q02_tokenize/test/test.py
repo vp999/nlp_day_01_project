@@ -14,8 +14,8 @@ class Testing(unittest.TestCase):
         with open('q02_tokenize/test/user_sol.pkl', 'wb') as f:
             dill.dump(q02_tokenize, f)
 
-        # with open('q02_tokenize/test/test_sol.pkl', 'wb') as f:
-        #     dill.dump(q02_tokenize, f)
+        with open('q02_tokenize/test/test_sol.pkl', 'wb') as f:
+            dill.dump(q02_tokenize, f)
         with open('q02_tokenize/test/user_sol.pkl', 'rb') as f:
             self.student_func = dill.load(f)
         with open('q02_tokenize/test/test_sol.pkl', 'rb') as f:

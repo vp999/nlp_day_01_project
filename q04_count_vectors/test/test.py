@@ -8,13 +8,14 @@ import pandas as pd
 from pandas.util.testing import assert_frame_equal,assert_series_equal
 from numpy.testing import assert_array_equal
 
-
 class Testing(unittest.TestCase):
     def setUp(self):
         print('setup')
         with open('q04_count_vectors/test/user_sol.pkl', 'wb') as f:
             dill.dump(q04_count_vectors, f)
 
+        with open('q04_count_vectors/test/test_sol.pkl', 'wb') as f:
+            dill.dump(q04_count_vectors, f)
         with open('q04_count_vectors/test/user_sol.pkl', 'rb') as f:
             self.student_func = dill.load(f)
         with open('q04_count_vectors/test/test_sol.pkl', 'rb') as f:
@@ -43,6 +44,9 @@ class Testing(unittest.TestCase):
 
     def test_return_4(self):
         assert_array_equal(self.student_return[0].toarray(), self.original_return[0].toarray(), "The return values do not match expected values")
+
+    def test_return_42(self):
+        assert_array_equal(self.student_return[1].toarray(), self.original_return[1].toarray(), "The return values do not match expected values")
 
 # if __name__ == '__main__':
 #     unittest.main() ## Remove this

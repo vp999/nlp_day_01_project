@@ -13,6 +13,8 @@ class Testing(unittest.TestCase):
         print('setup')
         with open('q05_classifier/test/user_sol.pkl', 'wb') as f:
             dill.dump(q05_classifier, f)
+        with open('q05_classifier/test/test_sol.pkl', 'wb') as f:
+            dill.dump(q05_classifier, f)
 
         with open('q05_classifier/test/user_sol.pkl', 'rb') as f:
             self.student_func = dill.load(f)
