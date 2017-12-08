@@ -1,5 +1,5 @@
 import unittest
-from inspect import getfullargspec
+from inspect import getargspec
 import warnings
 # warnings.filterwarnings("ignore")
 from build import q04_count_vectors
@@ -29,16 +29,16 @@ class Testing(unittest.TestCase):
         print(' ')
         print(' testing the arguements of the functions')
         print(' ')
-        self.args_student = getfullargspec(self.student_func).args
-        self.args_original = getfullargspec(self.solution_func).args
+        self.args_student = getargspec(self.student_func).args
+        self.args_original = getargspec(self.solution_func).args
         self.assertEqual(len(self.args_student), len(self.args_original),
                          "Expected argument(s) %d, Given %d" % (len(self.args_original), len(self.args_student)))
 
         # check the defaults of the function
 
     def test_defaults(self):
-        self.defaults_student = getfullargspec(self.student_func).defaults
-        self.defaults_solution = getfullargspec(self.solution_func).defaults
+        self.defaults_student = getargspec(self.student_func).defaults
+        self.defaults_solution = getargspec(self.solution_func).defaults
         self.assertEqual(self.defaults_student, self.defaults_solution,
                          "Expected default values do not match given default values")
 

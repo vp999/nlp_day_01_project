@@ -1,12 +1,12 @@
 import unittest
-from inspect import getfullargspec
-import warnings
-# warnings.filterwarnings("ignore")
+from inspect import getargspec
+
 from build import q05_classifier
-import pandas as pd
+
 import dill
-from pandas.util.testing import assert_frame_equal,assert_series_equal
+
 from numpy.testing import assert_array_equal
+
 
 class Testing(unittest.TestCase):
     def setUp(self):
@@ -29,20 +29,18 @@ class Testing(unittest.TestCase):
         print(' ')
         print(' testing the arguements of the functions')
         print(' ')
-        self.args_student = getfullargspec(self.student_func).args
-        self.args_original = getfullargspec(self.solution_func).args
+        self.args_student = getargspec(self.student_func).args
+        self.args_original = getargspec(self.solution_func).args
         self.assertEqual(len(self.args_student), len(self.args_original),
                          "Expected argument(s) %d, Given %d" % (len(self.args_original), len(self.args_student)))
 
         # check the defaults of the function
 
     def test_defaults(self):
-        self.defaults_student = getfullargspec(self.student_func).defaults
-        self.defaults_solution = getfullargspec(self.solution_func).defaults
+        self.defaults_student = getargspec(self.student_func).defaults
+        self.defaults_solution = getargspec(self.solution_func).defaults
         self.assertEqual(self.defaults_student, self.defaults_solution,
                          "Expected default values do not match given default values")
-
-
 
     def test_return_3(self):
         assert_array_equal(self.student_return[0], self.original_return[0], "The return values do not match expected values")
