@@ -23,7 +23,6 @@ In today's lecture we learned some of the core concepts invloved in Natural lang
 Lets review some of the concepts taught in the class. At the end of the assignment you'll be able to:
 
 * Implement the necessary preprocessing steps required while processing natural language.
-* Classify and segregate new documents into the specified category of pre-existing documents.
 * Show contextual understanding learned by machine.
 
 ## Dataset
