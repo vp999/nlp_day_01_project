@@ -3,6 +3,7 @@ from inspect import getargspec
 import warnings
 # warnings.filterwarnings("ignore")
 from ..build import q02_tokenize
+from greyatomlib.nlp_day_01_project.q02_tokenize.build import q02_tokenize as act_solution
 import dill
 import pandas as pd
 from pandas.util.testing import assert_frame_equal, assert_series_equal
@@ -16,7 +17,7 @@ class Testing(unittest.TestCase):
             dill.dump(q02_tokenize, f)
 
         with open('test_sol.pkl', 'wb') as f:
-            dill.dump(q02_tokenize, f)
+            dill.dump(act_solution, f)
         with open('user_sol.pkl', 'rb') as f:
             self.student_func = dill.load(f)
         with open('test_sol.pkl', 'rb') as f:

@@ -4,6 +4,7 @@ from inspect import getargspec
 from ..build import q01_load_data
 import dill
 import pandas as pd
+from greyatomlib.nlp_day_01_project.q01_load_data.build import q01_load_data as act_sol
 from pandas.util.testing import assert_frame_equal, assert_series_equal
 from numpy.testing import assert_array_equal
 
@@ -15,7 +16,7 @@ class Testing(unittest.TestCase):
             dill.dump(q01_load_data, f)
 
         with open('test_sol.pkl', 'wb') as f:
-            dill.dump(q01_load_data, f)
+            dill.dump(act_sol, f)
         with open('user_sol.pkl', 'rb') as f:
             self.student_func = dill.load(f)
         with open('test_sol.pkl', 'rb') as f:
