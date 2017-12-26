@@ -2,7 +2,8 @@ import unittest
 from inspect import getargspec
 import warnings
 # warnings.filterwarnings("ignore")
-from build import q04_count_vectors
+from ..build import q04_count_vectors
+from greyatomlib.nlp_day_01_project.q04_count_vectors.build import q04_count_vectors as act_sol
 import dill
 import numpy as np
 from numpy.testing import assert_array_equal
@@ -15,7 +16,7 @@ class Testing(unittest.TestCase):
             dill.dump(q04_count_vectors, f)
 
         with open('q04_count_vectors/test/test_sol.pkl', 'wb') as f:
-            dill.dump(q04_count_vectors, f)
+            dill.dump(act_sol, f)
         with open('q04_count_vectors/test/user_sol.pkl', 'rb') as f:
             self.student_func = dill.load(f)
         with open('q04_count_vectors/test/test_sol.pkl', 'rb') as f:
