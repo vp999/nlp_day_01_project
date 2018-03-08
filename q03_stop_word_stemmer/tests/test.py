@@ -4,7 +4,8 @@ import warnings
 # warnings.filterwarnings("ignore")
 from ..build import q03_stop_word_stemmer
 from greyatomlib.nlp_day_01_project.q03_stop_word_stemmer.build import q03_stop_word_stemmer as act_solution
-
+import sys, os
+sys.path.append(os.path.join(os.path.dirname(os.curdir)))
 
 
 path = 'data/20news-bydate-train/'
