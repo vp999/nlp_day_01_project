@@ -1,56 +1,33 @@
 import unittest
-from inspect import getargspec
+from inspect import getfullargspec
 import warnings
 # warnings.filterwarnings("ignore")
 from ..build import q04_count_vectors
-from greyatomlib.nlp_day_01_project.q04_count_vectors.build import q04_count_vectors as act_sol
-import dill
-import numpy as np
 from numpy.testing import assert_array_equal
-
+path = 'data/20news-bydate-train/'
+a,b = q04_count_vectors(path)
 
 class Testing(unittest.TestCase):
-    def setUp(self):
-        print('setup')
-        with open('user_sol.pkl', 'wb') as f:
-            dill.dump(q04_count_vectors, f)
-
-        with open('test_sol.pkl', 'wb') as f:
-            dill.dump(act_sol, f)
-        with open('user_sol.pkl', 'rb') as f:
-            self.student_func = dill.load(f)
-        with open('test_sol.pkl', 'rb') as f:
-            self.solution_func = dill.load(f)
-        self.data = 'data/20news-bydate-train/'
-        self.student_return = self.student_func(self.data)
-        self.original_return = self.solution_func(self.data)
 
     #  Check the arguements of the function
     def test_args(self):
-        print(' ')
-        print(' testing the arguements of the functions')
-        print(' ')
-        self.args_student = getargspec(self.student_func).args
-        self.args_original = getargspec(self.solution_func).args
-        self.assertEqual(len(self.args_student), len(self.args_original),
-                         "Expected argument(s) %d, Given %d" % (len(self.args_original), len(self.args_student)))
+        # Input parameters tests
+        args = getfullargspec(q04_count_vectors)
+        self.assertEqual(len(args[0]), 4, "Expected arguments %d, Given %d" % (1, len(args[0])))
 
         # check the defaults of the function
 
     def test_defaults(self):
-        self.defaults_student = getargspec(self.student_func).defaults
-        self.defaults_solution = getargspec(self.solution_func).defaults
-        self.assertEqual(self.defaults_student, self.defaults_solution,
-                         "Expected default values do not match given default values")
+        args = getfullargspec(q04_count_vectors)
+        self.assertEqual(args[3], ((1, 2),0.5,2), "Expected default values do not match given default values")
+
 
     def test_return_4(self):
-        self.assertEqual(np.array(self.student_return[0]).shape, np.array(self.original_return[0]).shape,
+        self.assertEqual(a.shape,(2262, 72601),
                          "The return values do not match expected values")
 
     def test_return_4_2(self):
-        self.assertEqual(np.array(self.student_return[1]).shape, np.array(self.original_return[1]).shape,
+        self.assertEqual(b.shape,(9052, 72601),
                          "The return values do not match expected values")
 
-# if __name__ == '__main__':
-#     unittest.main() ## Remove this
  
